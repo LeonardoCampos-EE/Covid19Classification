@@ -26,8 +26,7 @@ share/python-wheels/
 .installed.cfg
 *.egg
 MANIFEST
-*.zip
-*.csv
+
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
@@ -129,3 +128,11 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+*.zip
+*.csv
+*.jpg
+*.png
+*.jpeg
+
+images/

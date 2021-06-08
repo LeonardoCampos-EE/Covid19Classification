@@ -46,8 +46,8 @@ class PreprocessData:
 
         filter_classes = self.data_frame["finding"].str.contains("COVID")
 
-        self.data_frame["finding"][filter_classes] = True
-        self.data_frame["finding"][~filter_classes] = False
+        self.data_frame["finding"][filter_classes] = "1"
+        self.data_frame["finding"][~filter_classes] = "0"
 
         return
 
@@ -83,8 +83,8 @@ class PreprocessData:
         train_patients = unique_patients_list[:int(split_percentage*len(unique_patients_list))]
         validation_patients = unique_patients_list[int(split_percentage*len(unique_patients_list)):]
 
-        self.train_dataset = self.data_frame["patientid"].iloc[train_patients]
-        self.validation_dataset = self.data_frame["patientid"].iloc[validation_patients]
+        self.train_dataset = self.data_frame[self.data_frame["patientid"].isin(train_patients)]
+        self.validation_dataset = self.data_frame[self.data_frame["patientid"].isin(validation_patients)]
 
         return
 
